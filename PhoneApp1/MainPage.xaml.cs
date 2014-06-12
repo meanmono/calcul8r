@@ -85,6 +85,7 @@ namespace PhoneApp1
             num = true;
             y.Text += " + ";
         }
+        //game is  hard
         public void calcul()
         {
 
