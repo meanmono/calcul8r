@@ -29,6 +29,9 @@ namespace PhoneApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (y.Text == "0"){
+                y.Text = "";
+            }
             if (!num)
             {
                 y.Text += "8";
@@ -88,13 +91,10 @@ namespace PhoneApp1
         //game is  hard
         public void calcul()
         {
-
-            double first = Convert.ToInt32(firstnum);
-            double second = Convert.ToInt32(secondnum);
             switch (op)
             {
                 case 'p':
-                    r = first + second;
+                    r = Convert.ToDouble(firstnum) + Convert.ToDouble(secondnum);
                     result.Text = r.ToString();
                     break;
                 case 'm':
@@ -109,6 +109,8 @@ namespace PhoneApp1
                     r = Convert.ToDouble(firstnum) / Convert.ToDouble(secondnum);
                     result.Text = r.ToString();
                     break;
+                case 'o':
+                    break;
             }
             firstnum = r.ToString();
         }
@@ -116,10 +118,28 @@ namespace PhoneApp1
         {
             calcul();
         }
-
+        public double calcul8(string input)
+        {
+            op = input[input.IndexOf(" ") + 1];
+            double input1 = Double.Parse(input.Substring(0, input.IndexOf(" ") - 1));
+            double input2 = Double.Parse(input.Substring(input.IndexOf(" ") + 2));
+            double resultat = input1 + input2;
+            return resultat;
+        }
+        public double calcul9(string input)
+        {
+            //general version
+            op = input[input.IndexOf(" ") + 1];
+            double input1 = Double.Parse(input.Substring(0, input.IndexOf(" ") - 1));
+            double input2 = Double.Parse(input.Substring(input.IndexOf(" ") + 2));
+            double resultat = input1 + input2;
+            return resultat;
+        }
         private void minus_Click(object sender, RoutedEventArgs e)
         {
-
+            op = 'm';
+            num = true;
+            y.Text += " - ";
         }
 
         // Sample code for building a localized ApplicationBar
