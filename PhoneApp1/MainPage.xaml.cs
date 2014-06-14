@@ -125,17 +125,34 @@ namespace PhoneApp1
             double input2 = Double.Parse(input.Substring(input.IndexOf(" ") + 2));
             double resultat = input1 + input2;
             return resultat;
-        }
-        public double calcul9(string input)
-        {
-            //general version
-            op = input[input.IndexOf(" ") + 1];
-            double input1 = Double.Parse(input.Substring(0, input.IndexOf(" ") - 1));
-            double input2 = Double.Parse(input.Substring(input.IndexOf(" ") + 2));
-            double resultat = input1 + input2;
-            return resultat;
-        }
-        private void minus_Click(object sender, RoutedEventArgs e)
+		}
+		public double calcul9(string input)
+		{
+		    double r;
+		    char[] ops = new char[10];
+		    int k = 0;
+            //Collect all(up to 10) the operators in one char array
+		    for (int i = 0; i <= input.Length; i++)
+		    {
+			    if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
+			    {
+				    ops[k] = input[i];
+				    k++;
+			    }
+		    }
+		    int j = 0;
+            //Collect the integers(double support coming soon?)
+		    int[] numbers = new int[ops.Length+1];
+		    for (int i = 0; i <= k; i++){
+			    numbers[i] = input[j: ops[i] - 2];
+			    j = ops[i] + 2;
+		    }
+            numbers[ops.Length + 1] = int.Parse(input.Substring(j));
+            //Carry out the calculation
+
+			
+		}
+		private void minus_Click(object sender, RoutedEventArgs e)
         {
             op = 'm';
             num = true;
